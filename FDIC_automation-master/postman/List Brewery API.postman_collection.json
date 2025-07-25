@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "aa4e0dab-9571-44a8-9f9d-f4607f4fa03b",
+		"name": "List Brewery API",
+		"description": "List Brewery end point collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11626266"
+	},
+	"item": [
+		{
+			"name": "All breweries list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate status code is 200\", () => {\r",
+							"    pm.response.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by city",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate status code is 200\", () => {\r",
+							"    pm.response.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries?by_city=bend",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					],
+					"query": [
+						{
+							"key": "by_city",
+							"value": "bend"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries/{{obdb-id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries",
+						"{{obdb-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by id test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const restBody = pm.response.json();\r",
+							"console.log(restBody.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries/{{obdb-id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries",
+						"{{obdb-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries search query param",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries/search?query=new&per_page=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "new"
+						},
+						{
+							"key": "per_page",
+							"value": "3"
+						},
+						{
+							"key": "per_page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "query",
+							"value": "New Realm Brewing",
+							"disabled": true
+						},
+						{
+							"key": "query",
+							"value": "550 Somerset Ter NE Unit 101",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by distant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries?per_page=3&by_dist=38,77",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					],
+					"query": [
+						{
+							"key": "by_dist",
+							"value": "38.8977,77.0365",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "3"
+						},
+						{
+							"key": "by_dist",
+							"value": "38,77"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries?per_page=3&by_type=brewpub",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "3"
+						},
+						{
+							"key": "by_type",
+							"value": "micro",
+							"disabled": true
+						},
+						{
+							"key": "by_type",
+							"value": "proprietor",
+							"disabled": true
+						},
+						{
+							"key": "by_type",
+							"value": "brewpub"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries?page=15&per_page=1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "15"
+						},
+						{
+							"key": "per_page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries by postal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries?per_page=3&by_postal=44107",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "3"
+						},
+						{
+							"key": "by_postal",
+							"value": "44107"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries autocomplete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries/autocomplete?query=dog",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries",
+						"autocomplete"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "dog"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breweries meta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breweries/meta",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breweries",
+						"meta"
+					],
+					"query": [
+						{
+							"key": "by_country",
+							"value": "south_korea",
+							"disabled": true
+						},
+						{
+							"key": "by_type",
+							"value": "micro",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://api.openbrewerydb.org/v1"
+		},
+		{
+			"key": "obdb-id",
+			"value": "b54b16e1-ac3b-4bff-a11f-f7ae9ddc27e0",
+			"type": "string"
+		}
+	]
+}
